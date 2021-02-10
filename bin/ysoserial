@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+
+lib_dir = File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib'))
+$LOAD_PATH << lib_dir unless $LOAD_PATH.include?(lib_dir)
+
+require 'ysoserial/cli'
+
+YSoSerial::CLI.start
+
+# puts YSoSerial::Gadgets::UniGadget1
+# class_loader = Psych::ClassLoader.new
+# puts class_loader.load("YSoSerial::Gadgets::UniGadget1")
+# puts Psych.resolve("YSoSerial::Gadgets::UniGadget1")
+# puts YSoSerial::Gadgets.constants[1].new("id 1>&2").test
+# obj = YSoSerial::Gadgets.__send__(:new, "id 1>&2")

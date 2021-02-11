@@ -23,6 +23,7 @@ module YSoSerial
         options = Docopt::docopt($doc)
       rescue Docopt::Exit => e
         puts e.message
+        return
       end
 
       # import all gadgets

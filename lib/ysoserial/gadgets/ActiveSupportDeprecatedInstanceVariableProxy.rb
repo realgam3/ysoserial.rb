@@ -21,7 +21,7 @@ end
 
 module YSoSerial
   module Gadgets
-    class GEMVersionRubyOnRails < YSoSerial::BaseGadget
+    class ActiveSupportDeprecatedInstanceVariableProxy < YSoSerial::BaseGadget
       def supported_formats
         [:yaml, :marshal]
       end

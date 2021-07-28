@@ -16,40 +16,38 @@ Options:
 
 DOCOPT
 
-module YSoSerial
-  class CLI
-    def self.start
-      begin
-        options = Docopt::docopt($doc)
-      rescue Docopt::Exit => e
-        puts e.message
-        return
-      end
+class YSoSerial::CLI
+  def self.start
+    begin
+      options = Docopt::docopt($doc)
+    rescue Docopt::Exit => e
+      puts e.message
+      return
+    end
 
-      # import all gadgets
-      gadgets = YSoSerial::Gadgets.table
+    # import all gadgets
+    gadgets = YSoSerial::Gadgets.table
 
-      unless options["--gadget"]
-        raise "Gadget not chosen"
-      end
-      gadget_symbol = options["--gadget"].to_sym
-      unless gadgets.include? gadget_symbol
-        raise "Gadget not found"
-      end
+    unless options["--gadget"]
+      raise "Gadget not chosen"
+    end
+    gadget_symbol = options["--gadget"].to_sym
+    unless gadgets.include? gadget_symbol
+      raise "Gadget not found"
+    end
 
-      gadget_class = gadgets[gadget_symbol]
-      command = options["--command"]
-      gadget = gadget_class.new(command)
+    gadget_class = gadgets[gadget_symbol]
+    command = options["--command"]
+    gadget = gadget_class.new(command)
 
-      function_args = [
-        options["--formatter"].downcase.to_sym,
-        options["--output"].downcase.to_sym,
-      ]
-      if options["--test"]
-        gadget.test(*function_args)
-      else
-        puts gadget.generate(*function_args)
-      end
+    function_args = [
+      options["--formatter"].downcase.to_sym,
+      options["--output"].downcase.to_sym,
+    ]
+    if options["--test"]
+      gadget.test(*function_args)
+    else
+      puts gadget.generate(*function_args)
     end
   end
 end

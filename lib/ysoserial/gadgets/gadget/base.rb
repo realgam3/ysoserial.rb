@@ -39,7 +39,7 @@ module YSoSerial
       raise "Supported Formats not configured"
     end
 
-    def payload
+    def payload(format = :marshal)
       raise "Payload not configured"
     end
 

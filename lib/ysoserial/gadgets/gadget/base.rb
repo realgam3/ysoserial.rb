@@ -19,6 +19,10 @@ OUTPUT_MAP = {
     "encoder": -> (value) { Base64.urlsafe_encode64(value, padding: 0) },
     "decoder": -> (value) { Base64.urlsafe_decode64(value, padding: 0) },
   },
+  "hex": {
+    "encoder": -> (value) { value.each_byte.map { |b| b.to_s(16) }.join },
+    "decoder": -> (value) { value.scan(/../).map { |x| x.hex.chr }.join },
+  },
 }
 
 module YSoSerial

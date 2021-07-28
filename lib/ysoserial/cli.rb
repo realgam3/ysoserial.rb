@@ -7,7 +7,7 @@ ysoserial.rb generates deserialization payloads for a variety of ruby formatters
 Usage: ysoserial.rb [options]
 
 Options:
-  -o, --output=VALUE         The output format (raw|escaped|base64). [default: raw]
+  -o, --output=VALUE         The output format (raw|escaped|base64|hex). [default: raw]
   -g, --gadget=VALUE         The gadget chain.
   -f, --formatter=VALUE      The formatter (yaml|marshal). [default: marshal]
   -c, --command=VALUE        The command to be executed. [default: id 1>&2]
